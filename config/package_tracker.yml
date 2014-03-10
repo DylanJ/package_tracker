@@ -1,0 +1,8 @@
+fedex:
+  login: 'meter_number'
+  password: 'hunter2'
+  account: 'gs9fh76s786dj7a87d'
+  key: '87k987fd98sdvufdjsnfwe87232k'
+
+dhl:
+  # not supported, yet.
