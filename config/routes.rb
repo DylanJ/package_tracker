@@ -1,4 +1,3 @@
 PackageTracker::Engine.routes.draw do
-  post '/' => 'tracking#track'
-  get '/' => 'tracking#track'
+  post '/' => 'tracking#track', as: :track
 end
