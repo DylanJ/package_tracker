@@ -41,7 +41,7 @@ module PackageTracker
 
       {
         status: data.status,
-        shipment_time: data.shipment_time,
+        shipment_time: data.ship_time,
         destination: data.destination,
         events: data.shipment_events
       }
