@@ -1,0 +1,7 @@
+en:
+  package_tracker:
+    header: 'Track FedEx/DHL Packages'
+
+  track: 'Track Shipment'
+  close: 'Close'
+
