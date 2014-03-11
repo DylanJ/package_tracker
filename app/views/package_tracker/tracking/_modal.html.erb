@@ -12,7 +12,7 @@
       </div>
       <div class="modal-body">
         <p><%= I18n.t('package_tracker.modal_description') %></p>
-        <p><input type="text" class="tracking-number"/></p>
+        <p><input type="text" class="tracking-number" value="1010095742170014832400578986691756"/></p>
         <div class="results">
         </div>
       </div>
@@ -22,4 +22,36 @@
       </div>
     </div>
   </div>
+
+  <script class="result-template" type="text/html">
+    <div class="">
+      destination: {{destination.city}}, {{destination.province}}, {{destination.country}}
+    </div>
+    <div class="">
+      shipped on: {{shipment_time}}
+    </div>
+    <div class="">
+      status: {{status}}
+    </div>
+
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#events}}
+          <tr>
+            <td>{{time}}</td>
+            <td>{{location.city}}, {{location.province}}, {{location.country}}</td>
+            <td>{{name}}</td>
+          </tr>
+        {{/events}}
+    </table>
+  </script>
 </div>
+
