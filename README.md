@@ -10,7 +10,7 @@ package_tracker assumes you have both jQuery and bootstrap(css & javascript) loa
 
 TODO:
 1. (should be a task)
-2. load package_tracker/tracker javascript somewhere on your page
+2. load package_tracker/package_tracker javascript somewhere on your page
 
 ## Config
 
