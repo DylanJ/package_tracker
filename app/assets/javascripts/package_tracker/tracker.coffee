@@ -7,8 +7,9 @@ class PackageTracker
     @result_template_source = @modal.find('.result-template').html()
 
   valid_dhl_id: (id) ->
-    # todo
-    false
+    if id.length != 12
+      return false
+    true
 
   valid_fedex_id: (id) ->
     #only going to support fedex's new barcodes which are 34 characters long
