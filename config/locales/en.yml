@@ -1,7 +1,12 @@
 en:
-  package_tracker:
-    header: 'Track FedEx/DHL Packages'
-
-  track: 'Track Shipment'
   close: 'Close'
 
+  package_tracker:
+    carrier: 'Carrier'
+    destination: 'Destination'
+    header: 'Track FedEx/DHL Packages'
+    modal_description: 'Enter your FedEx or DHL tracking number in the input field below and click "Track Shipment".'
+    shipped_on: 'Shipped On'
+    status: 'Status'
+
+  track: 'Track Shipment'

@@ -4,7 +4,7 @@
 </button>
 
 <div class="package-tracker modal fade" id="<%= modal_id %>" tabindex="-1" role="dialog" aria-labelledby="<%= "#{modal_id}" %>" aria-hidden="true" data-tracking-url="<%= package_tracker.track_path %>">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -24,16 +24,16 @@
   </div>
 
   <script class="result-template" type="text/html">
-    <div class="">
-      destination: {{destination.city}}, {{destination.province}}, {{destination.country}}
-    </div>
-    <div class="">
-      shipped on: {{shipment_time}}
-    </div>
-    <div class="">
-      status: {{status}}
-    </div>
-
+    <dl class="dl-horizontal">
+      <dt><%= I18n.t('package_tracker.carrier') %></dt>
+      <dd>{{carrier}}</dd>
+      <dt><%= I18n.t('package_tracker.destination') %></dt>
+      <dd>{{destination.city}}, {{destination.province}}, {{destination.country}}</dd>
+      <dt><%= I18n.t('package_tracker.shipped_on') %></dt>
+      <dd>{{shipment_time}}</dd>
+      <dt><%= I18n.t('package_tracker.status') %></dt>
+      <dd>{{status}}</dd>
+    </dl>
 
     <table class="table table-bordered">
       <thead>

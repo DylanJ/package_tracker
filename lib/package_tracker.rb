@@ -40,6 +40,7 @@ module PackageTracker
       data = @fedex.find_tracking_info( id, carrier_code: carrier )
 
       {
+        carrier: 'FedEx',
         status: data.status,
         shipment_time: data.ship_time,
         destination: data.destination,
