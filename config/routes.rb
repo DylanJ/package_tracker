@@ -1,3 +1,3 @@
 PackageTracker::Engine.routes.draw do
-  post '/' => 'tracking#track', as: :track
+  post '/' => 'application#track', as: :track
 end
