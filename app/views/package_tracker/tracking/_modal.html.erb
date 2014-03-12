@@ -23,35 +23,6 @@
     </div>
   </div>
 
-  <script class="result-template" type="text/html">
-    <dl class="dl-horizontal">
-      <dt><%= I18n.t('package_tracker.carrier') %></dt>
-      <dd>{{carrier}}</dd>
-      <dt><%= I18n.t('package_tracker.destination') %></dt>
-      <dd>{{destination.city}}, {{destination.province}}, {{destination.country}}</dd>
-      <dt><%= I18n.t('package_tracker.shipped_on') %></dt>
-      <dd>{{shipment_time}}</dd>
-      <dt><%= I18n.t('package_tracker.status') %></dt>
-      <dd>{{status}}</dd>
-    </dl>
-
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Location</th>
-          <th>Event</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#events}}
-          <tr>
-            <td>{{time}}</td>
-            <td>{{location.city}}, {{location.province}}, {{location.country}}</td>
-            <td>{{name}}</td>
-          </tr>
-        {{/events}}
-    </table>
-  </script>
+  <%= render( 'package_tracker/tracking/result_template') %>
 </div>
 
