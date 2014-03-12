@@ -52,6 +52,18 @@ module PackageTracker
 
       { error: 'Invalid tracking ID' }
     end
+    def fedex id
+      id = "1010095742170963541600578986691745"
+      url = "https://www.fedex.com/fedextrack/?tracknumbers=#{id}&locale=en_CA"
+
+      doc = Nokogiri::HTML(open(url))
+
+      {
+        carrier: 'FedEx',
+        status: data.status.capitalize,
+        events: data.shipment_events
+      }
+    end
 
     private
 
@@ -71,13 +83,6 @@ module PackageTracker
       end
     end
 
-    def fedex id, carrier='fedex_ground'
-      {
-        carrier: 'FedEx',
-        status: data.status.capitalize,
-        events: data.shipment_events
-      }
-    end
 
   end
 end
