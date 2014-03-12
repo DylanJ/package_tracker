@@ -41,7 +41,7 @@ module PackageTracker
 
       {
         carrier: 'FedEx',
-        status: data.status,
+        status: data.status.upcase,
         shipment_time: data.ship_time,
         destination: data.destination,
         events: data.shipment_events
