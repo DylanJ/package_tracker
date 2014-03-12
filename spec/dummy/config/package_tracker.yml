@@ -1,0 +1,8 @@
+fedex:
+  login: ''
+  password: '1vokShcguxECOo1qMGT4xsGSq'
+  key: 'zdJMkbetjWKSdkRs '
+  account: '510087062'
+
+dhl:
+  # not supported, yet.
