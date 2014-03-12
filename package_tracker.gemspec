@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.0.3"
-  s.add_dependency "active_shipping"
   s.add_dependency "coffee-rails"
+  s.add_dependency "nokogiri"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "pry"
