@@ -53,8 +53,7 @@ module PackageTracker
       { error: 'Invalid tracking ID' }
     end
 
-    def fedex_test
-      id = "1010095742170963541600578986691745"
+    def fedex id
       url = "https://www.fedex.com/trackingCal/track"
 
       uri = URI.parse(url)
@@ -71,30 +70,30 @@ module PackageTracker
       })
 
       req.set_form_data( {
-        data: '{"TrackPackagesRequest":{"appType":"wtrk","uniqueKey":"","processingParameters":{"anonymousTransaction":true,"clientId":"WTRK","returnDetailedErrors":true,"returnLocalizedDateTime":false},"trackingInfoList":[{"trackNumberInfo":{"trackingNumber":"1010095742170963541600578986691745","trackingQualifier":"","trackingCarrier":""}}]}}',
+        data: '{"TrackPackagesRequest":{"appType":"wtrk","uniqueKey":"","processingParameters":{"anonymousTransaction":true,"clientId":"WTRK","returnDetailedErrors":true,"returnLocalizedDateTime":false},"trackingInfoList":[{"trackNumberInfo":{"trackingNumber":"' + id + '","trackingQualifier":"","trackingCarrier":""}}]}}',
         action: 'trackpackages',
         locale: 'en_US',
         format: 'json',
         version: '99'
       })
 
-      lols = http.request(req)
-      binding.pry
+      response = JSON.parse(http.request(req).body)
 
-    end
-
-    def fedex id
-      id = "1010095742170963541600578986691745"
-      url = "https://www.fedex.com/fedextrack/?tracknumbers=#{id}&locale=en_CA"
-
-      doc = Nokogiri::HTML(open(url))
-
-      binding.pry
+      info = response["TrackPackagesResponse"]["packageList"][0]
+      status = info["statusWithDetails"]
+      carrier = info["trackingCarrierDesc"]
+      events = info["scanEventList"].map do |event|
+        {
+          date: "#{event['date']} #{event['time']}",
+          location: event['scanLocation'],
+          status: event['status']
+        }
+      end
 
       {
-        carrier: 'FedEx',
-        status: 'unknown',
-        events: 'unknown',
+        carrier: carrier,
+        status: status,
+        events: events
       }
     end
 
