@@ -1,6 +1,6 @@
 # Package Tracker
 
-This is a fairly simple project which piggy backs off of active_shipping to look up FedEx and DHL tracking information. It gives you the helper `tracker_button` which adds a button wherever it is called that once clicked opens a modal which if called with a tracking ID as the argument will be populated with the tracking information. If no argument is given the user is presented with a form which will fetch tracking information in the background and present it in the modal.
+This is a fairly simple project which scrapes tracking information for both DHL and FedEx and spits the info out into a modal. It gives you the helper method `tracker_button` which adds a button wherever it is called that once clicked opens a modal which will automatucally fetch the tracking info if a tracking id is specified. If no tracking ID is specified you can enter a tracking ID in the modal and it will be fetched once the user clicks 'Track Shipment'.
 
 ## Dependencies
 
@@ -8,15 +8,5 @@ package_tracker assumes you have both jQuery and bootstrap(css & javascript) loa
 
 ## Installation
 
-1. rake package_tracker:install ( doesn't actually exist atm ) [TODO]
-2. load package_tracker/package_tracker javascript somewhere on your page
-
-## Config
-
-Once installed there should be a file called package_tracker.yml in your applications config directory. Fill in your credentials there.
-
-## TODO
-1. Support DHL ( implement relevant portion in active_shipping )
-2. Write installation script
-3. Clean up code a wee bit
+add `gem 'package_tracker'` to your gemfile.
 
