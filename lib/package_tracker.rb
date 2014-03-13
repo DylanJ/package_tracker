@@ -52,16 +52,49 @@ module PackageTracker
 
       { error: 'Invalid tracking ID' }
     end
+
+    def fedex_test
+      id = "1010095742170963541600578986691745"
+      url = "https://www.fedex.com/trackingCal/track"
+
+      uri = URI.parse(url)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      req = Net::HTTP::Post.new(uri.request_uri, {
+        'Referer' => "https://www.fedex.com/fedextrack/?tracknumbers=#{id}&locale=en",
+        'User-Agent'=> "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)",
+        'X-Requested-With' => 'XMLHttpRequest',
+        'Content-Type' => 'application/x-www-form-urlencoded; charset=UTF-8'
+
+      })
+
+      req.set_form_data( {
+        data: '{"TrackPackagesRequest":{"appType":"wtrk","uniqueKey":"","processingParameters":{"anonymousTransaction":true,"clientId":"WTRK","returnDetailedErrors":true,"returnLocalizedDateTime":false},"trackingInfoList":[{"trackNumberInfo":{"trackingNumber":"1010095742170963541600578986691745","trackingQualifier":"","trackingCarrier":""}}]}}',
+        action: 'trackpackages',
+        locale: 'en_US',
+        format: 'json',
+        version: '99'
+      })
+
+      lols = http.request(req)
+      binding.pry
+
+    end
+
     def fedex id
       id = "1010095742170963541600578986691745"
       url = "https://www.fedex.com/fedextrack/?tracknumbers=#{id}&locale=en_CA"
 
       doc = Nokogiri::HTML(open(url))
 
+      binding.pry
+
       {
         carrier: 'FedEx',
-        status: data.status.capitalize,
-        events: data.shipment_events
+        status: 'unknown',
+        events: 'unknown',
       }
     end
 
