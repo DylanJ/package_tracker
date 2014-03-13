@@ -32,10 +32,11 @@ class PackageTracker
         else
           that.results.html( Mustache.render(that.error_template_source, data) )
 
-    else
-      alert('incorrect tracking id')
-
 $ ->
+  if (val = $('.package-tracker').find('.tracking-number').val()) != ""
+    package_tracker = new PackageTracker($('.package-tracker'))
+    package_tracker.lookup()
+
   $('.package-tracker .track').on 'click', ->
     package_tracker = new PackageTracker(this)
     package_tracker.lookup()
