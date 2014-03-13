@@ -8,5 +8,6 @@ en:
     modal_description: 'Enter your FedEx or DHL tracking number in the input field below and click "Track Shipment".'
     shipped_on: 'Shipped On'
     status: 'Status'
+    error: 'Error'
 
   track: 'Track Shipment'

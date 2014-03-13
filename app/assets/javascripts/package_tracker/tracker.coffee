@@ -5,6 +5,7 @@ class PackageTracker
     @results = @modal.find('.results')
 
     @result_template_source = @modal.find('.result-template').html()
+    @error_template_source = @modal.find('.error-template').html()
 
   valid_dhl_id: (id) ->
     if id.length != 12
@@ -20,15 +21,17 @@ class PackageTracker
   valid_tracking_id: (id) ->
     @valid_fedex_id(id) || @valid_dhl_id(id)
 
-
   lookup: (id) =>
     id = @modal.find('.tracking-number').val()
     that = this
 
     if @valid_tracking_id(id)
       $.post @tracking_url, { id: id }, (data) ->
-        results = Mustache.render(that.result_template_source, data)
-        that.results.html( results )
+        if data.response == 'success'
+          that.results.html( Mustache.render(that.result_template_source, data) )
+        else
+          that.results.html( Mustache.render(that.error_template_source, data) )
+
     else
       alert('incorrect tracking id')
 

@@ -31,6 +31,7 @@ module PackageTracker
       end
 
       {
+        response: 'success',
         carrier: 'DHL',
         status: status,
         events: updates,
@@ -50,7 +51,7 @@ module PackageTracker
         return send(method, id)
       end
 
-      { error: 'Invalid tracking ID' }
+      { response: 'failure', message: 'Invalid tracking ID' }
     end
 
     def fedex id
@@ -91,6 +92,7 @@ module PackageTracker
       end
 
       {
+        response: 'success',
         carrier: carrier,
         status: status,
         events: events
