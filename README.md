@@ -1,6 +1,6 @@
 # Package Tracker
 
-This is a fairly simple project which scrapes tracking information for both DHL and FedEx and spits the info out into a modal. It gives you the helper method `tracker_button` which adds a button wherever it is called that once clicked opens a modal which will automatucally fetch the tracking info if a tracking id is specified. If no tracking ID is specified you can enter a tracking ID in the modal and it will be fetched once the user clicks 'Track Shipment'.
+This is a fairly simple project which scrapes tracking information for both DHL and FedEx and spits the info out into a modal. It gives you the helper method `track_shipment` will either add a button which open a modal for the user to enter a tracking number and then embed the results where the helper was called or embed the tracking information of the id passed into the helper.
 
 ## Dependencies
 

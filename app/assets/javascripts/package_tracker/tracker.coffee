@@ -1,11 +1,13 @@
 class PackageTracker
   constructor: (context) ->
-    @modal = $(context).closest('.package-tracker')
-    @tracking_url = @modal.data('tracking-url')
-    @results = @modal.find('.results')
+    @tracker = $(context).closest('.package-tracker')
+    @tracking_url = @tracker.data('tracking-url')
+    @results = @tracker.find('.results')
+    @errors = @tracker.find('.errors')
+    @modal = @tracker.find('.modal')
 
-    @result_template_source = @modal.find('.result-template').html()
-    @error_template_source = @modal.find('.error-template').html()
+    @result_template_source = @tracker.find('.result-template').html()
+    @error_template_source = @tracker.find('.error-template').html()
 
   valid_dhl_id: (id) ->
     if id.length != 12
@@ -22,22 +24,21 @@ class PackageTracker
     @valid_fedex_id(id) || @valid_dhl_id(id)
 
   lookup: (id) =>
-    id = @modal.find('.tracking-number').val()
+    id = @tracker.find('.tracking-number').val()
     that = this
 
     if @valid_tracking_id(id)
       $.post @tracking_url, { id: id }, (data) ->
         if data.response == 'success'
           that.results.html( Mustache.render(that.result_template_source, data) )
+          that.modal.modal('hide')
         else
-          that.results.html( Mustache.render(that.error_template_source, data) )
+          that.errors.html( Mustache.render(that.error_template_source, data) )
 
 $ ->
   if (val = $('.package-tracker').find('.tracking-number').val()) != ""
-    package_tracker = new PackageTracker($('.package-tracker'))
-    package_tracker.lookup()
+    new PackageTracker($('.package-tracker')).lookup()
 
   $('.package-tracker .track').on 'click', ->
-    package_tracker = new PackageTracker(this)
-    package_tracker.lookup()
+    new PackageTracker(this).lookup()
 

@@ -1,0 +1,6 @@
+<div class="package-tracker" data-tracking-url="<%= package_tracker.track_path %>">
+  <input type="hidden" class="tracking-number form-control" value="<%= id %>"/></p>
+  <div class="results"></div>
+  <%= render( 'package_tracker/tracking/result_template') %>
+  <%= render( 'package_tracker/tracking/error_template') %>
+</div>

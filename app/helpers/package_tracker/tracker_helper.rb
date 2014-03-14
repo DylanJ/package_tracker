@@ -1,7 +1,11 @@
 module PackageTracker
   module TrackerHelper
-    def tracker_button id=nil
-      render('package_tracker/tracking/modal', modal_id: modal_id, id: id)
+    def track_shipment id=nil
+      if id.present?
+        render('package_tracker/tracking/results', id: id)
+      else
+        render('package_tracker/tracking/modal', modal_id: modal_id)
+      end
     end
 
     def modal_id

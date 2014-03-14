@@ -3,27 +3,30 @@
   <%= I18n.t(:track) %>
 </button>
 
-<div class="package-tracker modal fade" id="<%= modal_id %>" tabindex="-1" role="dialog" aria-labelledby="<%= "#{modal_id}" %>" aria-hidden="true" data-tracking-url="<%= package_tracker.track_path %>">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel"><%= I18n.t('package_tracker.header') %></h4>
-      </div>
-      <div class="modal-body">
-        <p><%= I18n.t('package_tracker.modal_description') %></p>
-        <p><input type="text" class="tracking-number form-control" value="<%= id %>"/></p>
-        <div class="results">
+<div class="package-tracker" data-tracking-url="<%= package_tracker.track_path %>">
+  <div class="modal fade" id="<%= modal_id %>" tabindex="-1" role="dialog" aria-labelledby="<%= "#{modal_id}" %>" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel"><%= I18n.t('package_tracker.header') %></h4>
+        </div>
+        <div class="modal-body">
+          <p><%= I18n.t('package_tracker.modal_description') %></p>
+          <p><input type="text" class="tracking-number form-control"/></p>
+          <p><div class="errors"></div></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%= I18n.t(:close) %></button>
+          <button type="button" class="btn btn-primary track"><%= I18n.t(:track) %></button>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><%= I18n.t(:close) %></button>
-        <button type="button" class="btn btn-primary track"><%= I18n.t(:track) %></button>
-      </div>
     </div>
-  </div>
 
-  <%= render( 'package_tracker/tracking/result_template') %>
-  <%= render( 'package_tracker/tracking/error_template') %>
+    <%= render( 'package_tracker/tracking/result_template') %>
+    <%= render( 'package_tracker/tracking/error_template') %>
+  </div>
+  <div class="results">
+  </div>
 </div>
 
