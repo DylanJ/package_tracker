@@ -9,5 +9,6 @@ en:
     shipped_on: 'Shipped On'
     status: 'Status'
     error: 'Error'
+    no_id: 'No such tracking ID'
 
   track: 'Track Shipment'

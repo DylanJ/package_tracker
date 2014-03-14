@@ -12,7 +12,7 @@ module PackageTracker
         dhl_table = doc.css('table')
 
         if dhl_table.empty?
-          return { response: 'failure', message: 'No such tracking ID' }
+          return { response: 'failure', message: I18n.t('package_tracker.no_id') }
         end
 
         status = clean(dhl_table.css('tbody tr')[status_row].css('td')[status_text_cell].children[status_text_element].content)
