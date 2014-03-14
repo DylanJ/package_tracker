@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = PackageTracker::VERSION
   s.authors     = ["Dylan Johnston"]
   s.email       = ["qdylanj@gmail.com"]
-  s.homepage    = "http://john.ston.ca"
+  s.homepage    = "http://github.com/DylanJ/package_tracker"
   s.summary     = "FedEx / DHL package tracker helper"
   s.description = "Easily track FedEx or DHL shipments."
 

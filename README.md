@@ -8,5 +8,10 @@ package_tracker assumes you have both jQuery and bootstrap(css & javascript) loa
 
 ## Installation
 
-add `gem 'package_tracker'` to your gemfile.
+add `gem 'package_tracker', github: 'DylanJ/package_tracker'` to your gemfile.
+
+## Todo
+Rename Gem
+Build Gem
+Push Gem
 
