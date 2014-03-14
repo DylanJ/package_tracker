@@ -28,8 +28,8 @@ module PackageTracker
 
         info = response["TrackPackagesResponse"]["packageList"][0]
 
-        if (errors = info['errorList']).present?
-          return { response: 'failure', message: errors.first['message'] }
+        if (error = info['errorList'].first['message']).present?
+          return { response: 'failure', message: error }
         end
 
         status = info["statusWithDetails"]
