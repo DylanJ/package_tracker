@@ -30,9 +30,9 @@ module PackageTracker
       return nil if contains_alpha_characters?(id)
 
       case id.length
-      when 12
+      when DHL::IDLength
         return DHL
-      when 34
+      when FedEx::IDLength
         return FedEx
       end
     end

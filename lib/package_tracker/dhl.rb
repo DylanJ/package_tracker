@@ -1,6 +1,8 @@
 module PackageTracker
   module Tracker
     module DHL
+      IDLength = 12
+
       def self.lookup id
         status_row = 2          # third row in tbody
         status_text_cell = 2    # third cell in <td>

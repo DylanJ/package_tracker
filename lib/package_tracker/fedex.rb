@@ -1,6 +1,7 @@
 module PackageTracker
   module Tracker
     module FedEx
+      IDLength = 34
       URL = "https://www.fedex.com/trackingCal/track"
 
       def self.lookup id
