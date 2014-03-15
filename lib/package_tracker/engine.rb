@@ -9,7 +9,7 @@ module PackageTracker
     end
 
     config.generators do |g|
-      g.test_framework      :rspec,        :fixture => false
+      g.test_framework :rspec, fixture: false
       g.assets false
       g.helper false
     end
