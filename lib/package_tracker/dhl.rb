@@ -2,11 +2,11 @@ module PackageTracker
   module Tracker
     module DHL
       IDLength = 12
+      StatusRow = 2         # third row in tbody
+      StatusTextCell = 2    # third cell in <td>
+      StatusTextElement = 2 # "text<br>status"
 
       def self.lookup id
-        status_row = 2          # third row in tbody
-        status_text_cell = 2    # third cell in <td>
-        status_text_element = 2 # "text<br>status"
 
         url = "http://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=#{I18n.locale.to_s}&idc=#{id}&extendedSearch=true"
         doc = Nokogiri::HTML(open(url))
@@ -17,7 +17,7 @@ module PackageTracker
           return { response: 'failure', message: I18n.t('package_tracker.no_id') }
         end
 
-        status = clean(dhl_table.css('tbody tr')[status_row].css('td')[status_text_cell].children[status_text_element].content)
+        status = clean(dhl_table.css('tbody tr')[StatusRow].css('td')[StatusTextCell].children[StatusTextElement].content)
 
         updates_table = doc.css('table table')
 
