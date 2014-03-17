@@ -18,6 +18,11 @@ describe PackageTracker::TrackerHelper do
       end
     end
   end
+
+  describe "modal_id" do
+    subject { helper.modal_id }
+    it { should be_a String }
+  end
 end
 
 
