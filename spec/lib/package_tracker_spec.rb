@@ -65,4 +65,9 @@ describe PackageTracker::Tracker do
       it { should == { response: 'failure', message: 'No such tracking ID' } }
     end
   end
+
+  context "invalid id" do
+    let(:id) { 'ABC' }
+    it { should == { response: 'failure', message: 'Invalid tracking ID' } }
+  end
 end
